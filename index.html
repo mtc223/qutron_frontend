@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Solver AI</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">HomeworkSolver AI</div>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/about.html">About</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="upload-container">
+            <h1>Upload Your Homework</h1>
+            <p class="subtitle">Get instant help with your assignments</p>
+            
+            <form id="uploadForm" class="upload-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="file">Assignment File</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="file" required>
+                        <div class="file-upload-label">
+                            <span>Drag & drop or click to upload</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Get Solution</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </form>
+        </div>
+    </main>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
