@@ -193,136 +193,54 @@ input[type="file"] {
     margin: 0 auto;
     padding: 2rem;
 }
-
-.projects-container h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 2rem;
+.modal, .modal-content, .pdf-viewer, .project-card {
+    all: unset;
+    box-sizing: border-box;
 }
 
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.project-card h2 {
-    margin: 0 0 1rem 0;
-    color: #2c3e50;
-}
-
-.project-card p {
-    margin: 0;
-    color: #666;
-}
-
-.pdf-viewer {
-    width: 100%;
-    height: 500px;
-    border: none;
-    margin-top: 1rem;
-}
-
-.view-pdf-btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #3498db;
-    color: white;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-}
-
-.view-pdf-btn:hover {
-    background-color: #2980b9;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-}
-
-.modal-content {
-    position: relative;
-    width: 90%;
-    height: 90%;
-    margin: 2% auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.close-btn {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
-}
-body {
-    background: #000000;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    color: #00ff9d;
-    text-align: center;
-}
-
+/* Project specific styles */
 .project {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 8px;
     margin-bottom: 2rem;
+    transition: transform 0.2s ease;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .project h2 {
-    color: #ffffff;
-    margin-bottom: 0.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .project p {
-    color: #cccccc;
-    margin-bottom: 1rem;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
 }
 
 .view-button {
-    background: #333;
-    border: 1px solid #666;
-    color: white;
-    padding: 5px 15px;
+    background: var(--surface);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.5rem 1.5rem;
     cursor: pointer;
     border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 .view-button:hover {
-    background: #444;
+    background: var(--primary);
+    color: var(--background);
+    box-shadow: var(--glow);
 }
 
-/* Modal Styles */
+/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -330,9 +248,9 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95);
     z-index: 1000;
-    padding: 20px;
+    padding: 2rem;
     box-sizing: border-box;
 }
 
@@ -340,36 +258,41 @@ h1 {
     position: relative;
     width: 95%;
     height: 95%;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
+    margin: 2vh auto;
+    background: var(--surface);
     border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .close-modal {
     position: absolute;
-    right: 25px;
-    top: 25px;
-    width: 30px;
-    height: 30px;
-    background: #333;
-    color: white;
-    border: none;
+    right: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--surface);
+    color: var(--primary);
+    border: 2px solid var(--primary);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 24px;
     z-index: 1001;
+    transition: all 0.3s ease;
 }
 
 .close-modal:hover {
-    background: #555;
+    background: var(--primary);
+    color: var(--background);
+    box-shadow: var(--glow);
 }
 
 .pdf-viewer {
     width: 100%;
     height: 100%;
     border: none;
+    background: white;
 }
