@@ -193,6 +193,7 @@ input[type="file"] {
     margin: 0 auto;
     padding: 2rem;
 }
+
 .modal, .modal-content, .pdf-viewer, .project-card {
     all: unset;
     box-sizing: border-box;
