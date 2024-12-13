@@ -3,8 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qutron</title>
+    <title>Qutron</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary: #00ffbf;
+            --secondary: #4a4a4a;
+            --background: #0a0a0a;
+            --surface: #1a1a1a;
+            --text: #ffffff;
+            --glow: 0 0 10px var(--primary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: var(--surface);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: var(--glow);
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: var(--glow);
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary);
+            color: var(--background);
+            box-shadow: var(--glow);
+        }
+
+        .main-container {
+            display: flex;
+            height: calc(100vh - 60px);
+        }
+
+        .editor-section {
+            width: 50%;
+            padding: 1rem;
+            border-right: 1px solid var(--secondary);
+        }
+
+        .controls-section {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .parameters-section {
+            height: 50%;
+            padding: 1rem;
+            border-bottom: 1px solid var(--secondary);
+        }
+
+        .results-section {
+            height: 50%;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        textarea {
+            width: 100%;
+            height: calc(100% - 20px);
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--secondary);
+            padding: 1rem;
+            resize: none;
+            font-family: monospace;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .parameter-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            color: var(--primary);
+            flex: 1;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 0.5rem;
+            background: var(--surface);
+            border: 1px solid var(--secondary);
+            color: var(--text);
+            margin-left: 1rem;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: var(--background);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            box-shadow: var(--glow);
+            transform: translateY(-2px);
+        }
+
+        .result-image {
+            max-width: 100%;
+            margin-top: 1rem;
+            border: 1px solid var(--secondary);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -16,37 +177,89 @@
         </div>
     </nav>
 
-    <main class="container">
-        <div class="upload-container">
-            <h1>Upload Your Problem</h1>
-            <p class="subtitle">Format the problem as a pdf, and attach relevant information like textbooks or articles. Any problems can be submitted, and the more problems it solves, the better it becomes. This is still in beta so response times will be a couple days. </p>
-            
-            <form id="uploadForm" class="upload-form">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required placeholder="Enter your email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="file">Assignment File</label>
-                    <div class="file-upload-wrapper">
-                        <input type="file" id="file" required>
-                        <div class="file-upload-label">
-                            <span>Drag & drop or click to upload</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="main-container">
+        <!-- Left side - Text Editor -->
+        <section class="editor-section">
+            <textarea id="editor" placeholder="Enter your text here..."></textarea>
+        </section>
 
-                <button type="submit" class="submit-btn">
-                    <span>Get Solution</span>
-                    <div class="btn-glow"></div>
-                </button>
-            </form>
-        </div>
-    </main>
-    
-    <script src="js/main.js"></script>
+        <!-- Right side -->
+        <section class="controls-section">
+            <!-- Parameters -->
+            <div class="parameters-section">
+                <h2>Parameters</h2>
+                <div class="parameter-group">
+                    <label for="param1">Width</label>
+                    <input type="number" id="param1" value="1" min="0" max="100">
+                </div>
+                <div class="parameter-group">
+                    <label for="param2">Height</label>
+                    <input type="number" id="param2" value="1" min="0" max="100">
+                </div>
+                <div class="parameter-group">
+                    <label for="param3">Delay</label>
+                    <input type="number" id="param3" value="0" min="0" max="100">
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="results-section">
+                <h2>Results</h2>
+                <button id="submit-btn">Submit</button>
+                <div id="results-container">
+                    <!-- Images will be inserted here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', async () => {
+            const editorContent = document.getElementById('editor').value;
+            const param1 = document.getElementById('param1').value;
+            const param2 = document.getElementById('param2').value;
+            const param3 = document.getElementById('param3').value;
+
+            // Here you would typically send the data to your server
+            const data = {
+                content: editorContent,
+                parameters: {
+                    param1,
+                    param2,
+                    param3
+                }
+            };
+
+            console.log('Submitting:', data);
+
+            try {
+                // Example API call (commented out)
+                /*
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                
+                // Add received image to results
+                if (result.image) {
+                    const img = document.createElement('img');
+                    img.src = result.image;
+                    img.className = 'result-image';
+                    document.getElementById('results-container').appendChild(img);
+                }
+                */
+
+                alert('Submitted successfully!');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
 </body>
 </html>
-
-

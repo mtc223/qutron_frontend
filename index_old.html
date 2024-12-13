@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qutron</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Qutron</div>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/projects.html">Projects</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="upload-container">
+            <h1>Upload Your Problem</h1>
+            <p class="subtitle">Format the problem as a pdf, and attach relevant information like textbooks or articles. Any problems can be submitted, and the more problems it solves, the better it becomes. This is still in beta so response times will be a couple days. </p>
+            
+            <form id="uploadForm" class="upload-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="file">Assignment File</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="file" required>
+                        <div class="file-upload-label">
+                            <span>Drag & drop or click to upload</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Get Solution</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </form>
+        </div>
+    </main>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
